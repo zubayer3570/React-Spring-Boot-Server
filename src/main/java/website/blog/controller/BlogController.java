@@ -2,16 +2,12 @@ package website.blog.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
-import website.blog.interfaces.BlogRepository;
+import website.blog.repositories.BlogRepository;
 import website.blog.models.Blog;
+import website.blog.repositories.SearchRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -19,6 +15,9 @@ public class BlogController{
 
     @Autowired
     BlogRepository blogRepository;
+
+    @Autowired
+    SearchRepository searchRepository;
 
     @GetMapping("/allBlogs")
     List<Blog> getAllBlogs(){
@@ -34,5 +33,11 @@ public class BlogController{
     @GetMapping("/get-blog/{name}")
     Blog getBlog(@PathVariable("name") String name){
         return blogRepository.findBlogsByName(name);
+    }
+
+    @GetMapping("/search/{keyword}")
+    List<Blog> searchBlogs(@PathVariable String keyword){
+        System.out.println(keyword);
+        return searchRepository.searchBlogs(keyword);
     }
 }
