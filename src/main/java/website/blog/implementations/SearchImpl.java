@@ -51,7 +51,7 @@ public class SearchImpl implements SearchRepository {
         AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
                         new Document("index", "search_index_1")
                                 .append("text",
-                                        new Document("query", "Blog-1")
+                                        new Document("query", keyword)
                                                 .append("path", Arrays.asList("name", "text", "author")))),
                 new Document("$limit", 5L)));
 

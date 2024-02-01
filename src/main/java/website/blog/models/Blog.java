@@ -1,15 +1,21 @@
 package website.blog.models;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "blogs")
 public class Blog {
+
+    @Id
+    private String _id;
     private String author;
     private String name;
     private String text;
 
-    public Blog(String author, String name, String text) {
+    public Blog(String _id, String author, String name, String text) {
+        this._id = _id;
         this.author = author;
         this.name = name;
         this.text = text;
@@ -37,5 +43,13 @@ public class Blog {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String  get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

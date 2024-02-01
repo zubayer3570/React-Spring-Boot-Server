@@ -26,12 +26,12 @@ public class BlogController{
 
     @PostMapping("/add-blog")
     Blog postBlog(@RequestBody Blog blog){
-        System.out.println(blog.getName());
         return blogRepository.save(blog);
     }
 
     @GetMapping("/get-blog/{name}")
     Blog getBlog(@PathVariable("name") String name){
+        System.out.println(name);
         return blogRepository.findBlogsByName(name);
     }
 
@@ -39,5 +39,15 @@ public class BlogController{
     List<Blog> searchBlogs(@PathVariable String keyword){
         System.out.println(keyword);
         return searchRepository.searchBlogs(keyword);
+    }
+
+    @DeleteMapping("/delete-blog")
+    void deleteBlog(@RequestBody String id){
+        blogRepository.deleteById(id);
+    }
+
+    @PutMapping("/update-blog")
+    Blog updateBlog(@RequestBody Blog blog){
+        return blogRepository.save(blog);
     }
 }
