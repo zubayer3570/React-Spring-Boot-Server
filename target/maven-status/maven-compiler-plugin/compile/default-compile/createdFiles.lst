@@ -1,0 +1,6 @@
+website\blog\BlogApplication.class
+website\blog\repositories\BlogRepository.class
+website\blog\controller\BlogController.class
+website\blog\implementations\SearchImpl.class
+website\blog\models\Blog.class
+website\blog\repositories\SearchRepository.class
