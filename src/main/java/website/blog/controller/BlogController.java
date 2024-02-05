@@ -39,9 +39,9 @@ public class BlogController{
     Blog getBlog(@PathVariable("id") String id){
         System.out.println(id);
 //        return blogRepository.findBlogsByName(name);
-        Optional<Blog> blog = blogRepository.findById(id);
-        System.out.println(blog);
-        return blog.orElse(null);
+//        Optional<Blog> blog = blogRepository.findById(id);
+//        System.out.println(blog);
+        return blogRepository.findBy_id(id);
     }
 
     @GetMapping("/search/{keyword}")
