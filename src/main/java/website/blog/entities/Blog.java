@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Document(collection = "blogs")
 public class Blog {
 
-    @MongoId (value = FieldType.OBJECT_ID)
+    @Id
     private String _id;
     private String author;
     private String name;
