@@ -1,6 +1,7 @@
 package website.blog.controller;
 
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import website.blog.repositories.BlogRepository;
@@ -23,10 +24,9 @@ public class BlogController{
 
     @GetMapping("/allBlogs")
     List<Blog> getAllBlogs(){
-//        List<Blog> allblogs = blogRepository.findAll();
-//        allblogs.sort(Comparator.comparingInt(b-> Integer.parseInt(String.join("", b.getDate().split("-")))));
-//        return allblogs.reversed();
-        return blogRepository.findAll();
+        List<Blog> allblogs = blogRepository.findAll();
+        allblogs.sort(Comparator.comparingInt(b-> Integer.parseInt(String.join("", b.getDate().split("-")))));
+        return allblogs.reversed();
     }
 
     @PostMapping("/add-blog")
@@ -35,10 +35,13 @@ public class BlogController{
         return blogRepository.save(blog);
     }
 
-    @GetMapping("/get-blog/{name}")
-    Blog getBlog(@PathVariable("name") String name){
-        System.out.println(name);
-        return blogRepository.findBlogsByName(name);
+    @GetMapping("/get-blog/{id}")
+    Blog getBlog(@PathVariable("id") String id){
+        System.out.println(id);
+//        return blogRepository.findBlogsByName(name);
+//        Optional<Blog> blog = blogRepository.findById(id);
+//        System.out.println(blog);
+        return blogRepository.findBy_id(id);
     }
 
     @GetMapping("/search/{keyword}")

@@ -5,4 +5,5 @@ import website.blog.entities.Blog;
 
 public interface BlogRepository extends MongoRepository<Blog, String> {
     Blog findBlogsByName(String name);
+    Blog findBy_id(String id);
 }
