@@ -40,6 +40,7 @@ public class BlogController{
         System.out.println(id);
 //        return blogRepository.findBlogsByName(name);
         Optional<Blog> blog = blogRepository.findById(id);
+        System.out.println(blog);
         return blog.orElse(null);
     }
 
