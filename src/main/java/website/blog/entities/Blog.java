@@ -1,6 +1,5 @@
-package website.blog.models;
+package website.blog.entities;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,12 +11,14 @@ public class Blog {
     private String _id;
     private String author;
     private String name;
+    private String date;
     private String text;
 
-    public Blog(String _id, String author, String name, String text) {
+    public Blog(String _id, String author, String name, String date, String text) {
         this._id = _id;
         this.author = author;
         this.name = name;
+        this.date = date;
         this.text = text;
     }
 
@@ -35,6 +36,14 @@ public class Blog {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getText() {

@@ -3,9 +3,8 @@ package website.blog.implementations;
 import com.mongodb.client.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
-import website.blog.models.Blog;
+import website.blog.entities.Blog;
 import website.blog.repositories.BlogRepository;
 import website.blog.repositories.SearchRepository;
 
@@ -17,11 +16,7 @@ import java.util.Arrays;
 import org.bson.Document;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import org.bson.conversions.Bson;
 
-import java.util.concurrent.TimeUnit;
-
-import org.bson.Document;
 import com.mongodb.client.AggregateIterable;
 
 @Component
@@ -39,8 +34,7 @@ public class SearchImpl implements SearchRepository {
     @Override
     public List<Blog> searchBlogs(String keyword) {
         if(keyword.equals("all")){
-            System.out.println("hello");
-            return blogRepository.findAll();
+            return blogRepository.findAll().reversed();
         }
 
         List<Blog> arrayList = new ArrayList<>();
