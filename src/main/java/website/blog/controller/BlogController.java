@@ -23,10 +23,10 @@ public class BlogController{
 
     @GetMapping("/allBlogs")
     List<Blog> getAllBlogs(){
-        List<Blog> allblogs = blogRepository.findAll();
+//        List<Blog> allblogs = blogRepository.findAll();
 //        allblogs.sort(Comparator.comparingInt(b-> Integer.parseInt(String.join("", b.getDate().split("-")))));
-        return allblogs.reversed();
-//        return allblogs;
+//        return allblogs.reversed();
+        return blogRepository.findAll();
     }
 
     @PostMapping("/add-blog")
