@@ -25,7 +25,7 @@ public class BlogController{
     @GetMapping("/allBlogs")
     List<Blog> getAllBlogs(){
         List<Blog> allblogs = blogRepository.findAll();
-        allblogs.sort(Comparator.comparingInt(b-> Integer.parseInt(String.join("", b.getDate().split("-")))));
+//        allblogs.sort(Comparator.comparingInt(b-> Integer.parseInt(String.join("", b.getDate().split("-")))));
         return allblogs.reversed();
     }
 
@@ -35,13 +35,10 @@ public class BlogController{
         return blogRepository.save(blog);
     }
 
-    @GetMapping("/get-blog/{id}")
-    Blog getBlog(@PathVariable("id") String id){
-        System.out.println(id);
-//        return blogRepository.findBlogsByName(name);
-//        Optional<Blog> blog = blogRepository.findById(id);
-//        System.out.println(blog);
-        return blogRepository.findBy_id(id);
+    @GetMapping("/get-blog/{name}")
+    Blog getBlog(@PathVariable("name") String name){
+        System.out.println(name);
+        return blogRepository.findBlogsByName(name);
     }
 
     @GetMapping("/search/{keyword}")
