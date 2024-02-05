@@ -31,7 +31,7 @@ public class BlogController{
 
     @PostMapping("/add-blog")
     Blog postBlog(@RequestBody Blog blog){
-        blog.setDate(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
+        blog.setDate(LocalDate.now().format(DateTimeFormatter.ISO_DATE).toString());
         return blogRepository.save(blog);
     }
 
